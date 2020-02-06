@@ -4,26 +4,27 @@
   
   
   <entry>
-    <title>文章标题</title>
-    <link href="/2020/02/06/hello-world/"/>
-    <url>/2020/02/06/hello-world/</url>
+    <title>Chimo! 欢迎来到我的博客</title>
+    <link href="/1024/10/24/Chimo-%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/"/>
+    <url>/1024/10/24/Chimo-%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="javascript">console.log(123);</code></pre><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>我的前端日记</title>
-    <link href="/2010/02/06/%E6%88%91%E7%9A%84%E5%89%8D%E7%AB%AF%E6%97%A5%E8%AE%B0/"/>
-    <url>/2010/02/06/%E6%88%91%E7%9A%84%E5%89%8D%E7%AB%AF%E6%97%A5%E8%AE%B0/</url>
-    
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<p>关于搭建博客的二三事</p><a id="more"></a><figure>    <img src="./logo2.png" srcset="/img/loading.gif" style="width:200px">    <figcaption style="text-align:center">含姓名缩写的标识</figcaption></figure><h2 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h2><p>目前就读鸭大，大三学生，软件工程专业<br>目标成为前端工程师，仍在努力中…</p><h2 id="为什么要搭建这个博客"><a href="#为什么要搭建这个博客" class="headerlink" title="为什么要搭建这个博客"></a>为什么要搭建这个博客</h2><p>其实很早就想搭建博客了，当时的设想是从头到尾实现一个自己的博客，由于目标设的过于庞大，也就一拖再拖，仔细想想博客的目的应该是分享，而不是博客的实现，因此释然，用流行框架搭建了自己的博客。</p><p>一个博客可以是一个人的小花园一样的东西，将平日里自己的小成果，小想法，学习笔记丢进来打理打理，的确实挺诱人的，想来自己大学干了其实干的东西也不少，但是缺少收集和整理，往后的学习生涯里自主性的学习也会更加多，毕竟学分也修的差不多了，有一个博客，一个小花园来刺激自己学习并记录学习的过程想来也是一件蛮重要的事情。</p><p>同时也在不久之前，确定了自己以后理想的工作，也就意味着之后的大学生涯要专注于这件事情之上，在之前各种杂七杂八的都有去尝试过，但终究没有深入，现在终于确定了自己的目标，当了那么久的风滚草，也该有一个小花园来扎根了。</p><h2 id="今后会写写些啥"><a href="#今后会写写些啥" class="headerlink" title="今后会写写些啥"></a>今后会写写些啥</h2><ul><li>日常学习的笔记，包括但不限于前端相关笔记</li><li>一些有意义的报告</li><li>一些突然的想法</li><li>搬运以前的我认为有记录意义的作业报告，其他平台的博客文章等（文章时间以其原本的发布、完成时间为准）</li></ul><p>文章发布之后存在未来修改的可能，故文章底部会注明最近修改时间</p><h2 id="关于这篇文章的时间"><a href="#关于这篇文章的时间" class="headerlink" title="关于这篇文章的时间"></a>关于这篇文章的时间</h2><p>因为作为这一站点真正意义上的第一篇文章，但是今后存在搬运时间早于这篇文章的文章，因此决定将这篇文章的发布时间设置为一个特殊的时间，即2的10次方（1024），确保这篇文章始终置底，同时不失纪念意义。</p>]]></content>
     
     
+    <categories>
+      
+      <category>杂文</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>随笔</tag>
+      
+      <tag>心情</tag>
+      
+    </tags>
     
   </entry>
   
