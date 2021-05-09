@@ -301,19 +301,19 @@
       Fluid.utils.createCssLink('/css/gitalk.css')
       Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js', function () {
         var gitalk = new Gitalk({
-          clientID: 'd0a8027e1e144effcf25',
-          clientSecret: '66436ae5baabf0c41f1d8462f735fe6532d1dcab',
+          clientID: 'c9c561a5deebe29065ed',
+          clientSecret: '984c5e3f4bcb2e3afd629a8830a4eb564fee01f7',
           repo: 'CHIM0.github.io',
-          owner: 'CHIM0',
-          admin: ["CHIM0"],
+          owner: 'chim0',
+          admin: ["chim0"],
           id: '91d19dcd6c25123b010b309cd9fab37b',
           language: 'zh-CN',
           labels: ["Gitalk"],
           perPage: 10,
           pagerDirection: 'last',
-          createIssueManually: true,
-          distractionFreeMode: false,
-          proxy: '&lt;your own proxy&gt;/https://github.com/login/oauth/access_token'
+          createIssueManually: false,
+          distractionFreeMode: true,
+          proxy: 'https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token'
         });
         gitalk.render('gitalk-container');
       });
