@@ -1,0 +1,649 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;light&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo_black.png">
+  <link rel="icon" href="/img/logo_black.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#333333">
+  <meta name="description" content="CHIMO的博客">
+  <meta name="author" content="Hong Shen">
+  <meta name="keywords" content="">
+  
+  <title>GoOnline Classroom 设计说明 - Chimo!</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"chim0.github.io","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":"UA-157880333-1","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Chimo!</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/goOnline2.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="GoOnline Classroom 设计说明">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-06-06 13:52" pubdate>
+        2021年6月6日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.9k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      19
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">GoOnline Classroom 设计说明</h1>
+            
+            <div class="markdown-body">
+              <h2 id="界面改造方案说明"><a href="#界面改造方案说明" class="headerlink" title="界面改造方案说明"></a>界面改造方案说明</h2><figure style="text-align: center;">
+      <img src="./goOnline.gif" srcset="/img/loading.gif" lazyload style="height:500px">
+</figure>
+
+<blockquote>
+<p>本来这应该是ui的工作，不过朝交互设计方向发展的话也是应该尝试一下这种类型的工作，交互设计说到底也离不开具体的ui表现，因此接下了此次伴随着GoOnline Classroom部分前端和后端的大改造一起进行的界面改造工作。</p>
+</blockquote>
+<h3 id="页面主体结构设计"><a href="#页面主体结构设计" class="headerlink" title="页面主体结构设计"></a>页面主体结构设计</h3><figure style="text-align: center;">
+      <img src="./image-20210606143208955.png" srcset="/img/loading.gif" lazyload style="height:500px">
+      <figcaption>改造前的界面结构示意</figcaption>
+    </figure><br>
+
+<p>这是改造前的界面结构设计，大致可以分为三个部分：</p>
+<ul>
+<li>顶栏，含项目logo，以及右边的主功能按钮和含账户相关功能的下拉菜单栏</li>
+<li>底栏，含网页备案号，以及反馈渠道</li>
+<li>中间内容区，面包屑，子页签，子页签内容区</li>
+</ul>
+<p>其中，对于顶栏和底栏，采用了大块的主题色作为背景，作为主要用电脑端浏览器使用的应用，这样的顶栏和底栏牺牲了本就吃紧的纵向空间，加上面包屑，与页签的排布，导致最后页面可利用的真正的内容区只剩下这一小块</p>
+<figure style="text-align: center;">
+      <img src="./%E6%88%AA%E5%B1%8F2021-06-06%20%E4%B8%8B%E5%8D%882.46.41.png" srcset="/img/loading.gif" lazyload style="height:500px">
+      <figcaption>真正的内容空间</figcaption></figcaption>
+    </figure>
+    <br>
+
+<p>扁宽的空间与竖直的空间相比更不利于阅读（这也是为什么除了一些绘本之外的文字多的书籍，都不选择扁宽的书形），在自己的实践中也发现扁宽的空间排布内容通常需要分多列排布才能平衡界面的内容密度，因此需要为此做出改变，初步设计将页面的一级页签，与面包屑设置在顶部一起排布，且取消了使用大色块占位的设计。</p>
+  <div style="display:flex;justify-content:space-around;">
+    <figure style="text-align: center;">
+      <img src="./image-20210606150232859.png" srcset="/img/loading.gif" lazyload style="height:300px;">
+      <figcaption>扁宽书形</figcaption>
+    </figure><br>
+    <figure style="text-align: center;">
+      <img src="./image-20210606150315182.png" srcset="/img/loading.gif" lazyload style="height:300px">
+      <figcaption>普通书形</figcaption>
+    </figure>
+</div>
+<br>
+<figure style="text-align: center;">
+      <img src="./image-20210606145044094.png" srcset="/img/loading.gif" lazyload>
+      <figcaption>改造后顶栏</figcaption>
+    </figure>
+
+<figure style="text-align: center;">
+      <img src="./image-20210606145238739.png" srcset="/img/loading.gif" lazyload>
+      <figcaption>改造后底栏</figcaption>
+    </figure><br>
+
+<p>原先的顶栏和底栏的大色块会分散用户对于内容页面的注意力，改造后优化了不少，但是我还想更进一步地去淡化用户无需特意去关注的logo，面包屑，以及底栏（这些内容，很少甚至不会加入到用户达成自己目标所计划进行的操作中），因此设计将原先的上中下三层的平面结构（顶栏，中部内容，底栏）改造成立体的上中下三个层级，这些层级关系通过它们动态的遮挡，以及material design中经典的阴影去体现：</p>
+<ul>
+<li>悬浮层，始终前置于界面内容，无法被其他内容遮挡，用于放置层级或优先级较高的页签，操作或者信息提示</li>
+<li>内容层，可滚动，用来展示页面主体内容</li>
+<li>背景层，放置次级导航，网站logo，备案号面包屑等。</li>
+</ul>
+<figure style="text-align: center;">
+      <img src="./image-20210606155123124.png" srcset="/img/loading.gif" lazyload>
+      <figcaption>层级示意</figcaption>
+    </figure><br>
+
+<p>对于页面不可滚动的场景，如一些管理页面，内容层不会遮挡背景层中的logo，面包屑，备案号等，对于一些页面需要滚动的内容浏览页面，如查看作业描述页，内容层的滚动会将面包屑，备案号这类次要信息遮挡，从而变相让出页面的纵向空间，更好地进行内容的浏览，若背景层中有次级导航，内容层的滚动又不会遮挡次级导航。</p>
+  <div style="display:flex;justify-content:space-around;">
+    <figure style="text-align: center;">
+      <img src="./goonline_top_left.gif" srcset="/img/loading.gif" lazyload style="height:200px;">
+      <figcaption>内容区滚动示意（左上区）</figcaption>
+    </figure>
+    <figure style="text-align: center;">
+      <img src="./goonline_top_right.gif" srcset="/img/loading.gif" lazyload style="height:200px">
+      <figcaption>内容区滚动示意（右上区）</figcaption>
+    </figure>
+    <figure style="text-align: center;">
+      <img src="./goonline_bottom.gif" srcset="/img/loading.gif" lazyload style="height:200px">
+      <figcaption>内容区滚动示意（左下区）</figcaption>
+    </figure>
+  </div><br>
+
+<h3 id="色调风格-字体选择"><a href="#色调风格-字体选择" class="headerlink" title="色调风格/字体选择"></a>色调风格/字体选择</h3><p>轻快简明，是我觉得此类应用最需要贯彻的风格，因此我选择了灰白的主基调，辅以品牌色作为点缀，而goonline的logo颜色中的各种紫色，色调都偏黑灰或偏浅白，因此需要调出一种更加鲜亮的颜色<img src="%E6%88%AA%E5%B1%8F2021-06-06%20%E4%B8%8B%E5%8D%884.29.27.png" srcset="/img/loading.gif" lazyload alt="截屏2021-06-06 下午4.29.27">[#873EFF]作为强调色。</p>
+<div style="display:flex;justify-content:space-around;">
+    <figure style="text-align: center;">
+      <img src="./image-20210606162207603.png" srcset="/img/loading.gif" lazyload style="height:200px;">
+      <figcaption>goOnline logo，其中的颜色都偏黑灰或者浅白</figcaption>
+        </figure>  
+    <figure style="text-align: center;">
+      <img src="./课程名称卡片.png" srcset="/img/loading.gif" lazyload style="height:200px">
+      <figcaption>使用了新添加的颜色作为强调色的title卡片</figcaption>
+    </figure>
+  </div>
+
+<blockquote>
+<p>题外话，学姐设计的logo中每一个色块的形状都对应着七巧板中的一块，而七巧板是一个很好的教育相关的意象</p>
+</blockquote>
+<p>同时，使用灰白色作为主色调，需要避免出现纯黑以及非灰白的版面背景色，大部分字体使用65%透明度的黑色，少部分背景为非白色的字体则使用白色，字体主次更多地去使用字重的轻重来体现。</p>
+<p>同样的，为了体现轻快简明的界面，字体则可以采纳ant-design中的建议，兼顾了简洁与兼容性，以及不去使用大面积使用的话会看起来杂乱的衬线字体。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-keyword">@font-family</span>: -apple-system, BlinkMacSystemFont, <span class="hljs-string">&#x27;Segoe UI&#x27;</span>, Roboto, <span class="hljs-string">&#x27;Helvetica Neue&#x27;</span>, Arial,<br>  <span class="hljs-string">&#x27;Noto Sans&#x27;</span>, sans-serif, <span class="hljs-string">&#x27;Apple Color Emoji&#x27;</span>, <span class="hljs-string">&#x27;Segoe UI Emoji&#x27;</span>, <span class="hljs-string">&#x27;Segoe UI Symbol&#x27;</span>,<br>  <span class="hljs-string">&#x27;Noto Color Emoji&#x27;</span>;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="遵守的一些页面交互原则"><a href="#遵守的一些页面交互原则" class="headerlink" title="遵守的一些页面交互原则"></a>遵守的一些页面交互原则</h3><ul>
+<li><p>逻辑上为一类的内容尽量放在同一个页面。由于不是移动端应用，因此我们有条件去通过合理安排内容到同一个页面去减少页面的跳转以及用户操作的效率。例如，班级信息，某个班级的课时列表，以班级为基本发布单位的公告，都需要安排在一个页面，在逻辑上让用户意识到这些内容都属于“一个班级”内的范畴。也因为此，一些新建以及修改内容的表单我更倾向于做成模态框的形式，从而减少体验割裂的跳转</p>
+<figure style="text-align: center;">
+      <img src="./image-20210606170219410.png" srcset="/img/loading.gif" lazyload style="height:500px">
+      <figcaption>发布公告的模态框</figcaption>
+    </figure></li>
+<li><p>新建的优先级大于编辑。对于此类班级/课程管理的应用，新建班级/课程/公告的频次和重要性一般都会大于修改它们，因此对于新建某样东西的功能按钮，一般会使用强调色去强调，或者适当提高它们的层级。</p>
+<figure style="text-align: center;">
+      <img src="./image-20210606172253929.png" srcset="/img/loading.gif" lazyload style="width:400px">
+      <figcaption>提高层级+强调色强调的按钮</figcaption>
+    </figure></li>
+<li><p>对于信息密度较高的页面，需要合理使用灰色块/卡片/分割线去分割纵向的内容，内容的横向分割使用空白间隔即可。</p>
+</li>
+<li><p>用作管理的页面为了使用效率，尽量避免内容上的滚动；对于浏览信息性质的页面（如学生查看作业描述等），为了避免阅读的割裂感，内容过长时需要页面中的内容能够滚动。</p>
+</li>
+<li><p>所有内容都要有他的归宿。要避免看起来游离的，不知道它属于哪一个内容块的内容排布，作为用户，看到这类内容会非常困惑。</p>
+<div style="display:flex;justify-content:space-around;">
+    <figure style="text-align: center;">
+      <img src="./image-20210606173901219.png" srcset="/img/loading.gif" lazyload>
+      <figcaption>反例</figcaption>
+        </figure>  
+    <figure style="text-align: center;">
+      <img src="./image-20210606173928866.png" srcset="/img/loading.gif" lazyload>
+      <figcaption>正例</figcaption>
+    </figure>
+  </div></li>
+<li><p>…</p>
+<h3 id="使用的通用组件"><a href="#使用的通用组件" class="headerlink" title="使用的通用组件"></a>使用的通用组件</h3></li>
+</ul>
+<p>项目中大部分的通用组件，如表单，按钮，部分页签，下拉框，模态框等都是使用或者基于antd提供的组件去完成，但是设计界面结构的内容，如背景层的次级导航，底栏，顶栏悬浮按钮等都是非antd组件。antd总归是作为企业中台的设计，我认为可以使用它去完成快速开发，但是最终还是需要根据面向人群以及产品功能去做出取舍和改进。</p>
+<h2 id="设计规范的制定"><a href="#设计规范的制定" class="headerlink" title="设计规范的制定"></a>设计规范的制定</h2><p>设计规范使用mockplus提供的《示例规范库》摸板编写，放在了团队的mockplus文档中。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%9D%82%E6%96%87/">杂文</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/05/19/%E6%AD%8C%E6%9B%B2%E5%88%86%E4%BA%AB/">
+                        <span class="hidden-mobile">歌曲分享</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "9EGwKExMcbe7rU2B9pl4GF3R-gzGzoHsz",
+          app_key: "vJm9KT6v8dzXJIpYBQ31u6wu",
+          placeholder: "有什么想法💡就告诉我吧",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: false,
+          serverURLs: "",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+    
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'UA-157880333-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
